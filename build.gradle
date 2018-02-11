@@ -1,0 +1,63 @@
+version '1.0-SNAPSHOT'
+
+apply plugin: 'java'
+apply plugin: 'jacoco'
+
+sourceCompatibility = 1.8
+
+buildscript {
+    repositories {
+        mavenCentral()
+    }
+    dependencies {
+        classpath("org.junit.platform:junit-platform-gradle-plugin:1.0.0")
+    }
+}
+
+apply plugin: 'org.junit.platform.gradle.plugin'
+apply plugin: 'java'
+
+dependencies {
+    testCompile group: 'org.junit.jupiter', name: 'junit-jupiter-api', version: '5.0.0'
+    testCompile group: 'org.junit.jupiter', name: 'junit-jupiter-engine', version: '5.0.0'
+}
+
+repositories {
+    mavenCentral()
+}
+
+compileJava {
+    options.compilerArgs << "-Xlint:unchecked" << "-Xlint:deprecation" << "-Werror"
+}
+
+compileTestJava {
+    options.compilerArgs << "-Xlint:unchecked" << "-Xlint:deprecation" << "-Werror"
+}
+
+project.afterEvaluate {
+    def junitPlatformTestTask = project.tasks.getByName('junitPlatformTest')
+
+    jacoco {
+        toolVersion = "0.7.9"
+        applyTo junitPlatformTestTask
+    }
+
+    project.task(type: JacocoReport, "junitPlatformJacocoReport",
+            {
+                sourceDirectories = files("./src/main")
+                classDirectories = fileTree(dir: './build/classes/main/minesweeper',
+                        excludes: ['**/ui/*.class'])
+                executionData junitPlatformTestTask
+            })
+}
+
+task(runuigeneric, dependsOn: 'classes', type: JavaExec) {
+    main = 'minesweeper.ui.UiGeneric'
+    classpath = sourceSets.main.runtimeClasspath
+}
+task(runui, dependsOn: 'classes', type: JavaExec) {
+    main = 'minesweeper.ui.UiClone'
+    classpath = sourceSets.main.runtimeClasspath
+}
+
+defaultTasks 'clean', 'test', 'junitPlatformJacocoReport'

@@ -1,0 +1,41 @@
+Assign1: Due 11:59PM September 29
+
+***Your chance of success greatly increases if you start very early. Your chance of failure increases if you start late.
+
+Using Test First Development (no code without test first) implement the problem you designed in hw2. Feel free to evolve that design and use your judgment to make changes based on the improved understanding and learning.
+
+Take small steps, ask for frequent reviews.
+
+First start with a tests list and a canary test.
+
+After completing the assignment (and only after) answer the following questions:
+
+1. What did you learn mainly in this assignment?
+
+Approaching a problem through TDD was probably the main thing we learnt. Especially unit testing; testing a single piece of valuable code. We slowly implemented the game from each test case and evolved it into a complete game. The feedback loop of the test cases really helped in determining whether introducing a certain behaviour in the game will impact other parts. And if it did, then it was time to change the implementation or there was an error in the code itself. Either way, we got to know the problem immediately so it did not escalate in compelexity. We also learned about the gradle/junit build/test system which makes project setup very easy.
+
+2. How is your current design different, if at all, from the strategic design created in hw2?
+
+It is very different. We did not even need any minesweeperCell type class or interface implementation. Instead, we made use of states (behaviour) of each minesweeperCell and got the minesweeperCell type through functions as needs be. Eric: This did, however, come with a couple drawbacks. Determining minesweeperCell types via method calls required a few methods to become dependent on each other. Also, since minesweeperCell type does not change once the game is initialized, there's really no reason to repeatedly determine it. A better option would have been to store the different states in a minesweeperCell class and maintain an array of minesweeperCell objects. This would have made the code easier to follow during development. That's just my opinion at a glance. Perhaps more practice using this style will change my mind.
+
+3. Were there any surprises or things you did not expect along the way? Any 
+particular problem faced, things you had to tackle that you did not expect 
+beforehand?
+
+Shehbaz's experience:
+
+For me, the biggest challenge was to think of different kinds of test cases to capture the actual behaviour of the game. Also, some of the techniques, such as overriding function behaviour for testing was a new thing for me and at times it was questionable and confusing to implement. Otherwise, I enjoyed TDD and understood how beneficial it can be for large, complex projects.
+
+Eric: I agree with Shehbaz. I've never written test cases like this (perhaps I've never written test cases). Testing the code from outside the main source files is an interesting take on the matter. It's obviously beneficial, and I want to do the same thing for every new project I start. Setting up Gradle/Junit5 to work with Intellij was a bit of a pain, but it's definitely much easier to setup new projects now. From what I have learned, Gradle projects should work out of box for anyone once the wrapper is run. As the minesweeper code, there are some great new features in Java 8 that I read about, and teaming them up with my new knowledge of functional style, I think coding in Java will be much more enjoyable than it once was for me. I particularly like the Stream class, though we weren't able to utilize it much in this project. 2D arrays really put a damper on efficient coding. But we were able to utilize them in the UI portion, where we used a 1D array to hold minesweeperCell components. Overall, it was a fun experience.
+
+Extra: MinesweeperWithGraphics.jar shows the results of our testing image loading.
+
+Total [100]: 100
+Code compiles [10]:
+Program produces reasonably desired results when run [10]:
+All tests pass [20]:
+Code Coverage [10]:
+Test quality [10]:
+Design quality [20]:
+Code quality [10]:
+Answers to questions in assign1.txt [10]:
