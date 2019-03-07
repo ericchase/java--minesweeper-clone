@@ -1,6 +1,5 @@
 package minesweeper;
 
-public enum CellState
-{
-    INITIAL, EXPOSED, SEALED
+public enum CellState {
+  INITIAL, EXPOSED, SEALED
 }
