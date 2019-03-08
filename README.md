@@ -9,5 +9,6 @@ Focus on test first development, automated testing, and continuous integration.
 Generic UI  
 ![](preview-generic.png)
 
-Original Minesweeper images belong to Microsoft, of course.  
+Original UI  
 ![](preview.png)
+Original Minesweeper images belong to Microsoft, of course.
