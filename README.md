@@ -11,4 +11,5 @@ Generic UI
 
 Original UI  
 ![](preview.png)
+
 Original Minesweeper images belong to Microsoft, of course.
